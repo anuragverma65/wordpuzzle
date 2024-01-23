@@ -18,7 +18,6 @@ class WordLoader:
                     word = line.strip()
                     cls.words.add(word)
         except Exception as e:
-            # Log the exception or print it for debugging
             print(f"Error loading words: {e}")
 
     @classmethod
