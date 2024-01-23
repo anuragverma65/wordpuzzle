@@ -34,6 +34,14 @@ class WordPuzzleMiddlewareTestCase(TestCase):
             {"error": "Both startWord and endWord must be of the same length."},
         )
 
+        # Test case where start_word and end_word contain letters and/or numbers
+        response = self.client.get(url, {"startWord": "123", "endWord": "end"})
+        self.assertEqual(response.status_code, 400)
+        self.assertJSONEqual(
+            response.content,
+            {"error": "Both startWord and endWord must be of type string."},
+        )
+
     def test_process_exception(self):
         settings.DEBUG = False
         request = self.create_fake_request()

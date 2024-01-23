@@ -57,8 +57,10 @@ class WordPuzzle(models.Model):
         :return: A list of words obtained by replacing the character at the specified position.
         """
         new_words = []
+        LOWERCASE_A = ord("a")
+        LOWERCASE_Z = ord("z")
 
-        for c in range(ord("a"), ord("z") + 1):
+        for c in range(LOWERCASE_A, LOWERCASE_Z + 1):
             new_word = "".join(list(word[:pos]) + [chr(c)] + list(word[pos + 1 :]))
             new_words.append(new_word)
         return new_words

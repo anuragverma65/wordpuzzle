@@ -59,4 +59,9 @@ class WordPuzzleMiddleware:
                 status=400,
             )
 
-        return None
+        # Check if the words contain only letters
+        if not all(word.isalpha() for word in [start_word, end_word]):
+            return JsonResponse(
+                {"error": "Both startWord and endWord must be of type string."},
+                status=400,
+            )

@@ -16,7 +16,7 @@ class WordPuzzleTestCase(TestCase):
     def test_shortest_sequence_not_found(self):
         word_puzzle = WordPuzzle()
 
-        result_sequence = word_puzzle.shortest_sequence("abhi", "1234")
+        result_sequence = word_puzzle.shortest_sequence("abhode", "zurich")
 
         expected_response = []
 

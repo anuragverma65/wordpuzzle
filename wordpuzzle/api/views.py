@@ -54,8 +54,8 @@ class WordPuzzleApi(APIView):
         },
     )
     def get(self, request, *args, **kwargs):
-        start_word = request.GET.get("startWord", "")
-        end_word = request.GET.get("endWord", "")
+        start_word = request.GET.get("startWord", "").lower()
+        end_word = request.GET.get("endWord", "").lower()
 
         # Check if the result is already saved in the database
         saved_result = WordPuzzle.objects.filter(
