@@ -4,7 +4,7 @@ from django.test.client import RequestFactory
 from api.middleware import WordPuzzleMiddleware
 from django.http import JsonResponse
 from django.conf import settings
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 import unittest
 import traceback
 
@@ -12,7 +12,7 @@ import traceback
 class WordPuzzleMiddlewareTestCase(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
-        self.middleware = WordPuzzleMiddleware({})
+        self.middleware = WordPuzzleMiddleware(get_response=MagicMock())
 
     def test_middleware_request_validation(self):
         # Build the URL using reverse
@@ -81,3 +81,21 @@ class WordPuzzleMiddlewareTestCase(TestCase):
         fake_request = unittest.mock.Mock()
         fake_request.build_absolute_uri.return_value = "example.com"
         return fake_request
+
+    def test_call_exclude_swagger_url(self):
+        request = MagicMock(path="/api/wordpuzzle")
+
+        response = self.middleware(request)
+
+        self.assertEqual(response, self.middleware.get_response(request))
+
+    def test_call_include_swagger_url(self):
+        request = MagicMock(path="/api/swagger")
+
+        with patch.object(
+            self.middleware, "validate_request_parameters"
+        ) as mock_validate:
+            response = self.middleware(request)
+
+            mock_validate.assert_not_called()
+            self.assertEqual(response, self.middleware.get_response(request))

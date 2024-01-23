@@ -9,9 +9,6 @@ class WordPuzzle(models.Model):
     sequence = models.TextField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.start_word} to {self.end_word} at {self.timestamp}"
-
     def shortest_sequence(self, start, target):
         """
         Find the shortest sequence of word transformations from a start word to a target word using breadth-first search.

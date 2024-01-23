@@ -49,7 +49,7 @@ To get started with the Word Puzzle project, follow these steps:
      poetry run python manage.py test
      ```
 
-   - In order to generate coverage, run.
+   - In order to generate coverage, run (currently at 💯).
 
      ```bash
      coverage run --source='.' manage.py test && coverage report

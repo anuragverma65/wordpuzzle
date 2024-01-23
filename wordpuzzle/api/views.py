@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from rest_framework.views import APIView
+import logging
 
 from .models import WordPuzzle
 
@@ -63,6 +64,7 @@ class WordPuzzleApi(APIView):
         ).first()
         if saved_result:
             # Return the saved result directly
+            logging.info("Saved results found")
             sequence = saved_result.sequence.split(",") if saved_result.sequence else []
         else:
             # Perform the word transformation search using your search logic
