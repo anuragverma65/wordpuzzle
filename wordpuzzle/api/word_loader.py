@@ -2,18 +2,24 @@ import os
 
 
 class WordLoader:
-    """Class that provides an access to the dictionary"""
+    """Class that provides access to the dictionary"""
 
     words = None
 
     @classmethod
     def load_words(cls):
-        cls.words = set()
-        app_dir = os.path.dirname(__file__)
-        with open(app_dir + "/data/words.txt", "r", encoding="utf-8") as file:
-            for line in file:
-                word = line.strip()
-                cls.words.add(word)
+        try:
+            cls.words = set()
+            app_dir = os.path.dirname(__file__)
+            file_path = os.path.join(app_dir, "data", "words.txt")
+
+            with open(file_path, "r", encoding="utf-8") as file:
+                for line in file:
+                    word = line.strip()
+                    cls.words.add(word)
+        except Exception as e:
+            # Log the exception or print it for debugging
+            print(f"Error loading words: {e}")
 
     @classmethod
     def get_word_set(cls):
