@@ -42,8 +42,14 @@ To get started with the Word Puzzle project, follow these steps:
      poetry run python manage.py runserver
      ```
 
-4. **Run Tests:**
-   - Execute the test suite to ensure everything is working.
+4. **API Interaction:**
+   - Once the server is running, send a `GET` request to the endpoint eg:
+   [wordpuzzle?startWord=oyster&endWord=mussel](http://127.0.0.1:8000/api/wordpuzzle?startWord=oyster&endWord=mussel)
+
+    *More details (including request / response data types) can be found in [API Docs](#api-docs)*
+
+5. **Run Tests:**
+   - Execute the test suite to ensure everything is working. The tests are written for the core components inline with Django best practices
 
      ```bash
      poetry run python manage.py test
@@ -84,7 +90,7 @@ To get started with the Word Puzzle project, follow these steps:
 
 ## API Docs
 
-- The project also contains necessary setup to generate and publish Swagger/OpenAPI specification. Once the server is running, it can be found on <http://127.0.0.1:8000/api/swagger/>
+- The project also contains necessary setup to generate and publish Swagger/OpenAPI specification. Once the server is running, it can be found on <http://127.0.0.1:8000/api/swagger/>. It contains details of request and response data types and can be used to test the `GET` endpoint.
 
 ## Contributing
 

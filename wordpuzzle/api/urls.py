@@ -5,7 +5,6 @@ from .views import WordPuzzleApi
 
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from rest_framework.permissions import AllowAny
 
 
 schema_view = get_schema_view(
@@ -17,7 +16,7 @@ schema_view = get_schema_view(
         license=openapi.License(name=""),
     ),
     public=True,
-    permission_classes=(AllowAny,),  # Allow any user to access Swagger
+    permission_classes=([]),
 )
 urlpatterns = [
     path("wordpuzzle", WordPuzzleApi.as_view(), name="wordpuzzle"),
