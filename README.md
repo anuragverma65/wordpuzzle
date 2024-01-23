@@ -10,6 +10,13 @@ Necessary requirements can be found in `pyproject.toml` file.
 To get started with the Word Puzzle project, follow these steps:
 
 1. **Project Setup:**
+
+   - Go to wordpuzzle directory
+
+      ```bash
+      cd wordpuzzle
+      ```
+
    - **Recommendation**: Set poetry virtual env path to project directory for clearer management
 
       ```bash
